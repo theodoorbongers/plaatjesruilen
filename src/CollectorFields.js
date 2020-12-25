@@ -30,7 +30,7 @@ const CollectorFields = ({
     </label>
     <ul>
       {
-        redundantArray?.map((cardNumber, index) => <li className={classnames({ transfer: transfersOut.includes(cardNumber), possibleTransfer: possibleTransfersOut.includes(cardNumber) })} key={index}>{cardNumber}</li>)
+        redundantArray?.map((cardNumber, index) => <li className={classnames({ transfer: transfersOut.includes(cardNumber) && redundantArray.indexOf(cardNumber) === index, possibleTransfer: possibleTransfersOut.includes(cardNumber) })} key={index}>{cardNumber}</li>)
       }
     </ul>
   </>
