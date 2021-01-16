@@ -18,8 +18,14 @@ const App = () => {
 
   return (
     <>
-      <CollectorFields {...collectorFieldsData1} possibleTransfersIn={exchangeInfo.possibleCards2to1} transfersIn={exchangeInfo.cards2to1} possibleTransfersOut={exchangeInfo.possibleCards1to2} transfersOut={exchangeInfo.cards1to2} />
-      <CollectorFields {...collectorFieldsData2} possibleTransfersIn={exchangeInfo.possibleCards1to2} transfersIn={exchangeInfo.cards1to2} possibleTransfersOut={exchangeInfo.possibleCards2to1} transfersOut={exchangeInfo.cards2to1} />
+      <div className="top">
+        <div className="collectorPane collectorPane1">
+          <CollectorFields {...collectorFieldsData1} possibleTransfersIn={exchangeInfo.possibleCards2to1} transfersIn={exchangeInfo.cards2to1} possibleTransfersOut={exchangeInfo.possibleCards1to2} transfersOut={exchangeInfo.cards1to2} />
+        </div>
+        <div className="collectorPane collectorPane2">
+          <CollectorFields {...collectorFieldsData2} possibleTransfersIn={exchangeInfo.possibleCards1to2} transfersIn={exchangeInfo.cards1to2} possibleTransfersOut={exchangeInfo.possibleCards2to1} transfersOut={exchangeInfo.cards2to1} />
+        </div>
+      </div>
       <ExchangeInfo {...exchangeInfo} />
     </>
   );

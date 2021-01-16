@@ -29,10 +29,10 @@ const useValuesFromGoogleSheets = ({ onChangeLackingFieldValue, onChangeRedundan
         includeGridData: true,
       });
       const lackingSheet = spreadsheet.sheets[0];
-      const lackingValues = compact(lackingSheet.data[0].rowData.map(row => row.values[0]?.effectiveValue?.numberValue)).sort((x, y) => x - y);
+      const lackingValues = compact(lackingSheet?.data[0].rowData?.map(row => row.values[0]?.effectiveValue?.numberValue)).sort((x, y) => x - y);
       onChangeLackingFieldValue(lackingValues.join(', '));
       const redundantSheet = spreadsheet.sheets[1];
-      const redundantValues = compact(redundantSheet.data[0].rowData.map(row => Array(row.values[1]?.effectiveValue?.numberValue ?? 1).fill(row.values[0]?.effectiveValue?.numberValue))).flat().sort((x, y) => x - y);
+      const redundantValues = compact(redundantSheet?.data[0].rowData?.map(row => Array(row.values[1]?.effectiveValue?.numberValue ?? 1).fill(row.values[0]?.effectiveValue?.numberValue))).flat().sort((x, y) => x - y);
       onChangeRedundantFieldValue(redundantValues.join(', '));
     })().catch(window.error);
   }, [spreadsheetId, onChangeLackingFieldValue, onChangeRedundantFieldValue]);
