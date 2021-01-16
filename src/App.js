@@ -1,13 +1,20 @@
 import { useState, useMemo } from 'react';
 import { groupBy, orderBy } from 'lodash';
-import history from 'history/browser';
 import CollectorFields from './CollectorFields';
 import ExchangeInfo from './ExchangeInfo';
+import useValuesFromGoogleSheets from './useValuesFromGoogleSheets';
+import './App.css';
+
+const queryStringParams = new URLSearchParams(global.location.search);
+const spreadsheetId1 = queryStringParams.get('googleSheet1');
+const spreadsheetId2 = queryStringParams.get('googleSheet2');
 
 const App = () => {
   const collectorFieldsData1 = useCollectorFieldsData();
   const collectorFieldsData2 = useCollectorFieldsData();
   const exchangeInfo = useExchangeInfo(collectorFieldsData1, collectorFieldsData2);
+  useValuesFromGoogleSheets({ ...collectorFieldsData1, spreadsheetId: spreadsheetId1 });
+  useValuesFromGoogleSheets({ ...collectorFieldsData2, spreadsheetId: spreadsheetId2 });
 
   return (
     <>
